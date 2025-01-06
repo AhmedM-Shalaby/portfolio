@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 
 
@@ -9,8 +10,104 @@
   --main-color : #111111;
   --color-text : #fff ;
   --color-word :#daa520;
+  --secndary-color : #222222;
 }
 
-body {
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
+.dynamic-text {
+  color: var(--color-word);
+  font-weight: bold;
+  font-size: 24px;
+  position: relative;
+}
+.dynamic-text::before { 
+  content:  "";
+  position: absolute;
+  height: 100%;
+  width: 150%;
+  left: 0;
   background-color: var(--main-color);
+  animation:  typing 1.5s steps(20) infinite ;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in-out;
+  border-left:0.5px solid var(--color-word) ;
+}
+
+@keyframes typing { 
+
+100% { 
+  left: 100%;
+  margin: 0 -35px 0 35px; 
+}
+50% { 
+  left: 100%;
+  margin: 0 -35px 0 35px; 
+}
+100% { 
+  left: -20%;
+  margin: 0 -35px 0 35px; 
+}
+}
+
+.Boxs { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--secndary-color);
+  color: var(--color-text);
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.Box {
+  /* overflow: hidden; */
+}
+.Box span {
+  position: relative;
+  /* display: inline-block; */
+}
+.Box span::after {
+  content: attr(data-hover);
+  position: absolute;
+  color: var(--color-text);
+}
+.Box :first-child::after{
+  left: 0;
+  top: -100%;
+  color: var(--color-word);
+}
+.Box :last-child::after{
+  right: 0;
+  bottom: -100%;
+}
+
+.Box :last-child{
+  background: linear-gradient(to right, var(--color-word) 50%, var(--color-text)50%);
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+.Boxs:hover :last-child {
+  transform: translateY(-100%);
+  color: aqua;
+  background-position: 100% 0;
+}
+.Box :first-child{
+  background: linear-gradient(to right, var(--color-text) 50%, var(--color-word)50%);
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  transition: all 0.3s ease;
+}
+.Boxs:hover :first-child {
+  transform: translateY(100%);
+  color: red;
+  background-position: 100% 0;
 }
