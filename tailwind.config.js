@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors  : {
+        mainColor :  "#111111" ,
+        colorText : "#ffffff",
+        colorWord : "#daa520",
+        secandaryColor : "#222222"
+      },
+      fontFamily: {
+        sans: ['Lato', 'sans-serif'], // Add Lato font family here
+      },
+    },
   },
   plugins: [],
 }
