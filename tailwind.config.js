@@ -12,11 +12,9 @@ export default {
       fontFamily: {
         sans: ["Lato", "sans-serif"], // Add Lato font family here
       },
-      fontSize: {
-        Paragraf: "25px",
-        Heading: "45px",
-      },
+
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 };

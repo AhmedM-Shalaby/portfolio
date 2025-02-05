@@ -10,6 +10,13 @@
   --secndary-color: #222222;
 }
 
+
+@layer base {
+  p {
+    @apply text-[18px] lg:text-[25px] 2xl:text-[45px];
+  }
+}
+
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
@@ -49,68 +56,3 @@
   }
 }
 
-.Boxs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: var(--secndary-color);
-  color: var(--color-text);
-  font-size: 35px;
-  font-weight: 800;
-}
-
-.Box {
-  /* overflow: hidden; */
-}
-.Box span {
-  position: relative;
-  /* display: inline-block; */
-}
-.Box span::after {
-  content: attr(data-hover);
-  position: absolute;
-  color: var(--color-text);
-}
-.Box :first-child::after {
-  left: 0;
-  top: -100%;
-  color: var(--color-word);
-}
-.Box :last-child::after {
-  right: 0;
-  bottom: -100%;
-}
-
-.Box :last-child {
-  background: linear-gradient(
-    to right,
-    var(--color-word) 50%,
-    var(--color-text) 50%
-  );
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 100%;
-  transition: background-position 0.5s ease;
-}
-.Boxs:hover :last-child {
-  transform: translateY(-100%);
-  color: aqua;
-  background-position: 100% 0;
-}
-.Box :first-child {
-  background: linear-gradient(
-    to right,
-    var(--color-text) 50%,
-    var(--color-word) 50%
-  );
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 100%;
-  transition: all 0.3s ease;
-}
-.Boxs:hover :first-child {
-  transform: translateY(100%);
-  color: red;
-  background-position: 100% 0;
-}
