@@ -1,0 +1,55 @@
+.Box span::after {
+  content: attr(data-hover);
+  position: absolute;
+}
+.Box span:first-child::after {
+  color: var(--color-word);
+  top: -100%;
+  left: 0px;
+}
+.Box span:last-child::after {
+  color: var(--color-text);
+  top: 100%;
+  right: 0px;
+}
+
+.Box span {
+  display: inline-block;
+  transition: all 0.5s;
+}
+
+.Box:hover span:first-child {
+  transform: translateY(100%);
+}
+.Box:hover span:last-child {
+  transform: translateY(-100%);
+}
+
+.Box {
+  transform: scale(1);
+  transition: transform 0.5s linear;
+}
+
+.hidden-tab {
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.myJob::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid var(--color-word);
+  background-color: var(--primary-color);
+  animation: animationWord 2s;
+}
+@keyframes animationWord {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
