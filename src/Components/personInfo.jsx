@@ -1,5 +1,17 @@
 import { FaUser, FaCloudDownloadAlt } from "react-icons/fa";
 function PersonInfo() {
+  const linkCV =
+    "https://drive.google.com/file/d/1fVe65V1WLDfcJkgWVm9m-J4FK6dmP5hh/view?usp=drive_link";
+  const handleClick = async () => {
+    window.open(linkCV, "_blank");
+    const response = await fetch(linkCV);
+    const blob = await response.blob();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Ahmed_Shalaby_CV.pdf";
+    link.click();
+  };
+
   return (
     <>
       <div className="conent  mb-4 ">
@@ -49,13 +61,13 @@ function PersonInfo() {
         </div>
 
         <div className="col-span-2 flex gap-4 mt-6">
-          <a
-            href="#"
+          <button
+            onClick={() => handleClick()}
             className="bg-yellow-500 hover:bg-yellow-600  font-semibold py-2 px-4 rounded flex items-center gap-2"
           >
             DOWNLOAD RESUME
             <FaCloudDownloadAlt />
-          </a>
+          </button>
         </div>
       </div>
     </>
