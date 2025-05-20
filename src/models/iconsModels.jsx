@@ -2,6 +2,7 @@ import { FaBootstrap } from "react-icons/fa6";
 import { FaReact, FaCss3, FaHtml5 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiTailwindCssFill } from "react-icons/ri";
+import { SiNextdotjs } from "react-icons/si";
 
 export const objectLanguage = {
   react: <FaReact size={30} color="#61DBFB" />,
@@ -71,4 +72,5 @@ export const objectLanguage = {
       />
     </svg>
   ),
+  NextJS: <SiNextdotjs size={30} />,
 };
