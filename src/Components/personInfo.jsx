@@ -1,7 +1,7 @@
 import { FaUser, FaCloudDownloadAlt } from "react-icons/fa";
 function PersonInfo() {
   const linkCV =
-    "https://drive.google.com/file/d/1fVe65V1WLDfcJkgWVm9m-J4FK6dmP5hh/view?usp=drive_link";
+    "https://drive.google.com/file/d/1hC8R-_0Mz0oLRqg8MbQKZWsckQ1tmbdH/view?usp=drive_link";
   const handleClick = async () => {
     window.open(linkCV, "_blank");
     const response = await fetch(linkCV);
