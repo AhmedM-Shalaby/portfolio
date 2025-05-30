@@ -3,7 +3,10 @@ import AnimatedInput from "../Components/MyInput";
 import SocialMedia from "../Components/socialMedia";
 import { useFormik } from "formik";
 import inTouchSchema from "../models/inTouchSchema";
-
+import PhoneNumberInput from "../Components/inputPhone";
+import { sendContactForm } from "../api/httpHelper";
+import { useMutation } from "@tanstack/react-query";
+import { Slide, toast } from "react-toastify";
 function InTouch() {
   const initialValues = {
     UserName: "",
@@ -12,8 +15,50 @@ function InTouch() {
     Subject: "",
     message: "",
   };
+  const { mutate, isPending } = useMutation({
+    mutationFn: sendContactForm,
+    onMutate: () => {
+      toast.loading("Sending", {
+        toastId: "contactForm",
+        position: "top-right",
+        theme: "dark",
+      });
+    },
+    onSuccess: () => {
+      toast.update("contactForm", {
+        render: `${"Thank You For Trust Me "}`,
+        type: "success",
+        isLoading: false,
+        autoClose: 1500,
+        transition: Slide,
+      });
+    },
+    onError: () => {
+      toast.update("contactForm", {
+        render: "Errors",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+        transition: Slide,
+      });
+    },
+  });
   const onSubmit = (values) => {
-    console.log(values);
+    const body = {
+      name: values.UserName,
+      email: values.Email,
+      phone_number: values.Phone,
+      subject: values.Subject,
+      message: values.message,
+    };
+    mutate(body);
+    formik.resetForm({
+      UserName: "",
+      Email: "",
+      Phone: "",
+      Subject: "",
+      message: "",
+    });
   };
   const formik = useFormik({
     initialValues,
@@ -31,7 +76,6 @@ function InTouch() {
           please fill out the form below and I will reply you shortly.
         </p>
         <SocialMedia />
-
         <form
           onSubmit={formik.handleSubmit}
           className="mt-3 bg-[var(--primary-color)] p-4 rounded flex flex-wrap justify-center "
@@ -48,25 +92,14 @@ function InTouch() {
             Icon={<FaEnvelope />}
             func={formik}
           />
-          <AnimatedInput
+          <PhoneNumberInput
             type="text"
             label="Phone"
             Icon={<FaPhoneAlt />}
             func={formik}
           />
-          <AnimatedInput
-            type="text"
-            label="Subject"
-            Icon={<FaComments />}
-            func={formik}
-          />
-          {formik.errors.message && formik.touched.message ? (
-            <p className="w-full text-[12px] py-3 px-[30px] text-[#e53e3e]">
-              {formik.errors.message}{" "}
-            </p>
-          ) : (
-            ""
-          )}
+          <AnimatedInput label="Subject" func={formik} Icon={<FaComments />} />
+
           <textarea
             className="w-full p-2 bg-[var(--secandaryColor)] outline-none rounded"
             placeholder="Message"
@@ -76,11 +109,22 @@ function InTouch() {
             name="message"
             rows="8"
           ></textarea>
+          {formik.errors.message && formik.touched.message ? (
+            <p className="w-full text-[12px] py-3 px-[30px] text-[#e53e3e]">
+              {formik.errors.message}{" "}
+            </p>
+          ) : (
+            ""
+          )}
           <button
             type="submit"
-            className="bg-[var(--secandaryColor)]  text-white p-2 rounded  mt-4 hover:bg-[var(--color-word)] active:bg-[var(--color-word)] font-bold  transition-all duration-300"
+            className={`text-white p-2 rounded  mt-4 hover:bg-[var(--color-word)] active:bg-[var(--color-word)] font-bold  transition-all duration-300 ${
+              isPending
+                ? "bg-[var(--color-word)]"
+                : "bg-[var(--secandaryColor)]"
+            }`}
           >
-            Send Message
+            {!isPending ? "Send Message" : "Sending "}
           </button>
         </form>
       </div>

@@ -53,3 +53,8 @@
     left: 100%;
   }
 }
+
+select.PhoneInputCountrySelect {
+  background-color: #000;
+  color: #fff;
+}

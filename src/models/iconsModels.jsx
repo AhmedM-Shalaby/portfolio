@@ -5,11 +5,11 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { SiNextdotjs } from "react-icons/si";
 
 export const objectLanguage = {
-  react: <FaReact size={30} color="#61DBFB" />,
-  bootstrap5: <FaBootstrap size={30} color="#7952B3" />,
-  css: <FaCss3 size={30} color="#264DE4" />,
+  ReactJs: <FaReact size={30} color="#61DBFB" />,
+  BootStrap: <FaBootstrap size={30} color="#7952B3" />,
+  Css: <FaCss3 size={30} color="#264DE4" />,
   html5: <FaHtml5 size={30} color="#E34C26" />,
-  vite: (
+  Vite: (
     <svg
       className="w-[30px]"
       xmlns="http://www.w3.org/2000/svg"
@@ -52,9 +52,9 @@ export const objectLanguage = {
       />
     </svg>
   ),
-  javascript: <IoLogoJavascript size={30} color="#F0DB4F" />,
-  tailwindcss: <RiTailwindCssFill size={30} color="#38BDF8" />,
-  materialui: (
+  JavaScript: <IoLogoJavascript size={30} color="#F0DB4F" />,
+  TailwindCss: <RiTailwindCssFill size={30} color="#38BDF8" />,
+  MaterialUi: (
     <svg
       className="w-[30px]"
       xmlns="http://www.w3.org/2000/svg"
