@@ -66,7 +66,7 @@ function InTouch() {
     onSubmit,
   });
   return (
-    <div className="w-[80%]  m-auto gap-4 bg-[var(--background-color)] p-4">
+    <div className="w-full md:w-[80%]  m-auto gap-4 bg-[var(--background-color)] p-4">
       <div className="masseg  text-white mb-4">
         <h4 className="text-[20px] font-bold capitalize test tracking-[2px] mb-4">
           Feel free to drop me a line
